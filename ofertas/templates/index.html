@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Página inicial de Offerta</h1>
+  <p>Seja bem-vindo ao nosso site de Ofertas, um projeto desenvolvido por alunos da <em>Univesp</em>!</p>
+  <h2>Conteúdo dinâmico</h2>
+  <p>O site atualmente conta com:</p>
+  <ul>
+    <li><strong>Supermercados:</strong> {{ num_super }}</li>
+    <li><strong>Produtos:</strong> {{ num_prod }}</li>
+    <li><strong>Ofertas:</strong> {{ num_ofertas }}</li>
+  </ul>
+{% endblock %}
