@@ -16,7 +16,7 @@ class Produto(models.Model):
     marca = models.CharField(max_length=50)
     qtd = models.PositiveIntegerField()
     unid = models.CharField(max_length=50)
-    obs = models.CharField(max_length=50)
+    obs = models.CharField(max_length=50, null=True, blank=True)
     
     class Meta:
         ordering = ['desc', 'marca','qtd']
