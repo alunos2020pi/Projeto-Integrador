@@ -16,8 +16,9 @@
       {% block sidebar %}
         <ul class="sidebar-nav">
           <li><a href="{% url 'index' %}">Página inicial</a></li>
-          <li><a href="">Supermercados</a></li>
-          <li><a href="">Produtos</a></li>
+          <li><a href="{% url 'supermercados' %}">Supermercados</a></li>
+          <li><a href="{% url 'produtos' %}">Produtos</a></li>
+		  <li><a href="{% url 'ofertas' %}">Ofertas</a></li>
         </ul>
      {% endblock %}
       </div>

@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Lista de Ofertas</h1>
+  {% if em_oferta_list %}
+  <ul>
+    {% for em_oferta in em_oferta_list %}
+      <li>
+        <a href="{{ em_oferta.get_absolute_url }}">{{ em_oferta.pd }} por R${{ em_oferta.preco }} de {{ em_oferta.inicio }} à {{ em_oferta.fim }} no estabelecimento {{ em_oferta.sm }}  </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Não há ofertas cadastradas.</p>
+  {% endif %} 
+{% endblock %}

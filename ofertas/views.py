@@ -19,4 +19,14 @@ def index(request):
     
     #Renderiza o template index.html com os dados na variável context
     return render(request, 'index.html', context=context)
-    
+
+from django.views import generic
+
+class SupermercadoListView(generic.ListView):
+    model = Supermercado
+
+class ProdutoListView(generic.ListView):
+    model = Produto
+
+class Em_OfertaListView(generic.ListView):
+    model = Em_Oferta     

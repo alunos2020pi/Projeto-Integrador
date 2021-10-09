@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Lista de Produtos</h1>
+  {% if produto_list %}
+  <ul>
+    {% for produto in produto_list %}
+      <li>
+        <a href="{{ produto.get_absolute_url }}">{{ produto.desc }} {{ produto.marca }} {{ produto.qtd }} {{ produto.unid }} {{ produto.desc }} {{ produto.obs }}    </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Não há produtos cadastrados.</p>
+  {% endif %} 
+{% endblock %}
