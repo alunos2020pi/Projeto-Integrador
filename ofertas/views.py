@@ -29,4 +29,18 @@ class ProdutoListView(generic.ListView):
     model = Produto
 
 class Em_OfertaListView(generic.ListView):
-    model = Em_Oferta     
+    model = Em_Oferta
+ 
+def ofertasporsuper(request, pk):
+    """Função view para a página ofertas por super"""
+    ofertasporsuper = Em_Oferta.objects.filter(sm__id__exact=pk)
+    nomesuper = ofertasporsuper[0].sm
+    
+    
+    context = {
+        'ofertasporsuper': ofertasporsuper,
+        'nomesuper': nomesuper,
+    }
+    
+    #Renderiza o template index.html com os dados na variável context
+    return render(request, 'ofertasporsuper.html', context=context)

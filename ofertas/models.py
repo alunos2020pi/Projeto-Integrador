@@ -10,6 +10,9 @@ class Supermercado(models.Model):
 
     def __str__(self):
         return self.nome
+    
+    def get_absolute_url(self):
+        return reverse('ofertasporsuper', args=[str(self.id)])
         
 class Produto(models.Model):
     desc = models.CharField(max_length=50)

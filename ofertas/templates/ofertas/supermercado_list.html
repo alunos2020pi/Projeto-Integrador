@@ -6,7 +6,7 @@
   <ul>
     {% for supermercado in supermercado_list %}
       <li>
-        <a href="{{ supermercado.get_absolute_url }}">{{ supermercado.nome }}</a>
+        <a href="{% url 'ofertasporsuper' supermercado.id %}">{{ supermercado.nome }}</a>
       </li>
     {% endfor %}
   </ul>
