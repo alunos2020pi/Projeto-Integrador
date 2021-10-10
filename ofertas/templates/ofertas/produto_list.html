@@ -6,7 +6,7 @@
   <ul>
     {% for produto in produto_list %}
       <li>
-        <a href="{{ produto.get_absolute_url }}">{{ produto.desc }} {{ produto.marca }} {{ produto.qtd }} {{ produto.unid }} {{ produto.desc }} {{ produto.obs }}    </a>
+        <a href="{% url 'ondeencontrar' produto.id %}">{{ produto.desc }} {{ produto.marca }} {{ produto.qtd }} {{ produto.unid }} {{ produto.desc }} {{ produto.obs }}    </a>
       </li>
     {% endfor %}
   </ul>

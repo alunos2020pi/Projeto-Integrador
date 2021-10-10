@@ -44,3 +44,17 @@ def ofertasporsuper(request, pk):
     
     #Renderiza o template index.html com os dados na variável context
     return render(request, 'ofertasporsuper.html', context=context)
+    
+def ondeencontrar(request, pk):
+    """Função view para a encontrar supermercados que possuem um produto específico em oferta"""
+    locais = Em_Oferta.objects.filter(pd__id__exact=pk)
+    produto = locais[0].pd
+    
+    
+    context = {
+        'locais': locais,
+        'produto': produto,
+    }
+    
+    #Renderiza o template ondeencontrar.html com os dados na variável context
+    return render(request, 'ondeencontrar.html', context=context)

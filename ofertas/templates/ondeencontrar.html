@@ -1,0 +1,16 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Lista de Estabelecimentos com oferta do produto {{ produto }}</h1>
+  {% if locais %}
+  <ul>
+    {% for local in locais %}
+      <li>
+        <a href="{{ local.get_absolute_url }}">{{ local.sm }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Não há locais onde este produto esteja em oferta no momento.</p>
+  {% endif %} 
+{% endblock %}

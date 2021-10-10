@@ -26,6 +26,9 @@ class Produto(models.Model):
         
     def __str__(self):
         return f'{self.desc} {self.marca}, {self.qtd} {self.unid}, {self.obs}'
+        
+    def get_absolute_url(self):
+        return reverse('ondeencontrar', args=[str(self.id)])
 
         
 class Em_Oferta(models.Model):
