@@ -6,7 +6,7 @@
   <ul>
     {% for local in locais %}
       <li>
-        <a href="{{ local.get_absolute_url }}">{{ local.sm }}</a>
+        <a href="{% url 'ofertasporsuper' local.sm.id %}">{{ local.sm }}</a>
       </li>
     {% endfor %}
   </ul>
