@@ -6,7 +6,9 @@
   <ul>
     {% for produto in produto_list %}
       <li>
-        <a href="{% url 'ondeencontrar' produto.id %}">{{ produto.desc }} {{ produto.marca }} {{ produto.qtd }} {{ produto.unid }} {{ produto.desc }} {{ produto.obs }}    </a>
+        <a href="{% url 'ondeencontrar' produto.id %}">{{ produto.desc }} {{ produto.marca }} {{ produto.qtd }} {{ produto.unid }} {{ produto.desc }} {{ produto.obs }}
+			<p><img src="..{{ produto.imagem.url}}"
+		style="height:130px; width:auto"</img></p></a>
       </li>
     {% endfor %}
   </ul>

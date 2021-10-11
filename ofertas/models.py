@@ -4,6 +4,7 @@ from django.db import models
 
 class Supermercado(models.Model):
     nome = models.CharField(max_length=50, help_text='Insira o nome de um mercado')
+    imagem = models.ImageField(upload_to='supermercados/%Y/%m/%d', blank=True)
     
     class Meta:
         ordering = ['nome']
@@ -20,6 +21,7 @@ class Produto(models.Model):
     qtd = models.PositiveIntegerField()
     unid = models.CharField(max_length=50)
     obs = models.CharField(max_length=50, null=True, blank=True)
+    imagem = models.ImageField(upload_to='produtos/%Y/%m/%d', blank=True)
     
     class Meta:
         ordering = ['desc', 'marca','qtd']
