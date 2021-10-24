@@ -1,15 +1,24 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Lista de Estabelecimentos com oferta do produto {{ produto }}</h1>
+  <h2>Lista de Estabelecimentos com oferta do produto {{ produto }}</h2>
+  <br>
   {% if locais %}
-  <ul>
-    {% for local in locais %}
-      <li>
-        <a href="{% url 'ofertasporsuper' local.sm.id %}">{{ local.sm }}</a>
-      </li>
+  <table class="table table-hover"><thead>
+      <tr>
+        <th>Supermercado</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for local in locais %}
+		<tr>
+        <td>
+			<a href="{% url 'ofertasporsuper' local.sm.id %}">{{ local.sm }}</a>
+		</td>
+		</tr>
     {% endfor %}
-  </ul>
+	</tbody>
+	</table>
   {% else %}
     <p>Não há locais onde este produto esteja em oferta no momento.</p>
   {% endif %} 

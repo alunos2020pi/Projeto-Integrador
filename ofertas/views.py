@@ -20,6 +20,11 @@ def index(request):
     #Renderiza o template index.html com os dados na variável context
     return render(request, 'index.html', context=context)
 
+def about(request):
+    """Função view para a página sobre nós do site"""
+      #Renderiza o template about.html
+    return render(request, 'about.html')
+
 from django.views import generic
 
 class SupermercadoListView(generic.ListView):

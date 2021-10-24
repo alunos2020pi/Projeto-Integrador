@@ -1,17 +1,27 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Lista de Produtos</h1>
+  <h2>Lista de Produtos</h2>
+  <br>
   {% if produto_list %}
-  <ul>
-    {% for produto in produto_list %}
-      <li>
-        <a href="{% url 'ondeencontrar' produto.id %}">{{ produto.desc }} {{ produto.marca }} {{ produto.qtd }} {{ produto.unid }} {{ produto.desc }} {{ produto.obs }}
-			<p><img src="..{{ produto.imagem.url}}"
-		style="height:130px; width:auto"</img></p></a>
-      </li>
+  <table class="table table-hover"><thead>
+		<tr>
+			<th>Produto</th>
+			<th>Quantidade</th>
+			<th>Observação</th>
+		</tr>
+    </thead>
+	<tbody>
+	{% for produto in produto_list %}
+      <tr>
+        <td><a href="{% url 'ondeencontrar' produto.id %}">{{ produto.desc }} {{ produto.marca }}</a></td>
+		<td><a href="{% url 'ondeencontrar' produto.id %}">{{ produto.qtd }} {{ produto.unid }}</a></td>
+		<td><a href="{% url 'ondeencontrar' produto.id %}">{{ produto.obs }}</a></td>
+		</a>
+      </tr>
     {% endfor %}
-  </ul>
+	</tbody>
+	</table>
   {% else %}
     <p>Não há produtos cadastrados.</p>
   {% endif %} 

@@ -1,28 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-  {% block title %}<title>Offerta: um site de ofertas</title>{% endblock %}
+  {% block title %}<title>OFFerta</title>{% endblock %}
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <!-- Add additional CSS in static file -->
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-  <div class="container-fluid">
+  <div class="container-fluid ">
     <div class="row">
-      <div class="col-sm-2">
+		<nav class="navbar navbar-expand-sm py-3 border-bottom navbar-light">
+        <div class="container">
+            <a href="{% url 'index' %}" class="navbar-brand">
+                <span class="font-weight-bold h3">OFFerta</span>
+            </a>
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="{% url 'ofertas' %}" class="nav-link lead mr-4 font-weight-bold">Ofertas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'about' %}" class="nav-link lead mr-4 font-weight-bold">Quem Somos?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		</nav>
+	</div>
+	<div class="row">
       {% block sidebar %}
-        <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Página inicial</a></li>
-          <li><a href="{% url 'supermercados' %}">Supermercados</a></li>
-          <li><a href="{% url 'produtos' %}">Produtos</a></li>
-		  <li><a href="{% url 'ofertas' %}">Ofertas</a></li>
-        </ul>
-     {% endblock %}
-      </div>
-      <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
+        <div class="col-lg-3">
+            <ul class="list-group mb-3 mb-lg-0">
+                <a class="text-decoration-none list-group-item list-group-item-light"
+                    href="{% url 'index' %}">
+                    Página inicial
+                </a>
+				<a class="text-decoration-none list-group-item list-group-item-light"
+                    href="{% url 'supermercados' %}">
+                    Supermercados
+                </a>
+				<a class="text-decoration-none list-group-item list-group-item-light"
+                    href="{% url 'produtos' %}">
+                    Produtos
+                </a>
+				<a class="text-decoration-none list-group-item list-group-item-light"
+                    href="{% url 'ofertas' %}">
+                    Ofertas
+                </a>
+            </ul>
+        </div>
+	   {% endblock %}
+      <div class="col-sm-9 ">{% block content %}{% endblock %}</div>
     </div>
   </div>
 </body>
