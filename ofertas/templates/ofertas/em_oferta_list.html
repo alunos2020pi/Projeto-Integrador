@@ -4,7 +4,13 @@
   <h2>Lista de Ofertas</h2>
   <br>
   {% if em_oferta_list %}
-  <table class="table table-hover"><thead>
+  <table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por produto aqui"/></th>
+			<th></th>
+			<th></th>
+			<th></th>
+	  </tr>
       <tr>
         <th>Produto</th>
         <th>Preço</th>
