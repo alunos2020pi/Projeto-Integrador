@@ -6,6 +6,7 @@ from django.urls import reverse
 class Supermercado(models.Model):
     nome = models.CharField(max_length=50, help_text='Insira o nome de um mercado')
     imagem = models.ImageField(upload_to='supermercados/%Y/%m/%d', blank=True)
+    site = models.CharField(max_length=50, help_text='Insira o site com http://', blank=True)
     
     class Meta:
         ordering = ['nome']
@@ -15,6 +16,60 @@ class Supermercado(models.Model):
     
     def get_absolute_url(self):
         return reverse('ofertasporsuper', args=[str(self.id)])
+        
+class Loja(models.Model):
+    sm = models.ForeignKey('Supermercado', on_delete=models.SET_NULL, null=True)
+    nome = models.CharField(max_length=50)
+    lograd = models.CharField(max_length=50)
+    num = models.PositiveIntegerField()
+    bairro = models.CharField(max_length=50)
+    cidade = models.CharField(max_length=50)
+    
+    ESTADOS = (
+        ('AC',	'Acre'),
+        ('AL',	'Alagoas'),
+        ('AP',	'Amapá'),
+        ('AM',	'Amazonas'),
+        ('BA',	'Bahia'),
+        ('CE',	'Ceará'),
+        ('DF',	'Distrito Federal'),
+        ('ES',	'Espírito Santo'),
+        ('GO',	'Goiás'),
+        ('MA',	'Maranhão'),
+        ('MT',	'Mato Grosso'),
+        ('MS',	'Mato Grosso do Sul'),
+        ('MG',	'Minas Gerais'),
+        ('PA',	'Pará'),
+        ('PB',	'Paraíba'),
+        ('PR',	'Paraná'),
+        ('PE',	'Pernambuco'),
+        ('PI',	'Piauí'),
+        ('RJ',	'Rio de Janeiro'),
+        ('RN',	'Rio Grande do Norte'),
+        ('RS',	'Rio Grande do Sul'),
+        ('RO',	'Rondônia'),
+        ('RR',	'Roraima'),
+        ('SC',	'Santa Catarina'),
+        ('SP',	'São Paulo'),
+        ('SE',	'Sergipe'),
+        ('TO',	'Tocantins'),
+    )
+    
+    estado = models.CharField(
+        max_length=2,
+        choices=ESTADOS,
+        default='SP',
+    )
+    
+    cep = models.CharField(max_length=9, help_text='Formato 00000-000')
+    
+    class Meta:
+        ordering = ['nome']
+
+    def __str__(self):
+        return f'{self.nome}: {self.lograd}, {self.num} - {self.bairro} - {self.cidade}-{self.estado} CEP:{self.cep}'
+    
+    
         
 class Produto(models.Model):
     desc = models.CharField(max_length=50)

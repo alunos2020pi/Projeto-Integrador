@@ -2,11 +2,15 @@ from django.contrib import admin
 
 # Register your models here.
 
-from ofertas.models import Supermercado, Produto, Em_Oferta
+from ofertas.models import Supermercado, Produto, Em_Oferta, Loja
 
 @admin.register(Supermercado)
 class SupermercadoAdmin(admin.ModelAdmin):
     list_display = ('nome',)
+
+@admin.register(Loja)
+class LojaAdmin(admin.ModelAdmin):
+    list_display = ('sm','nome','lograd','num','bairro','cidade','estado','cep')
 
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
