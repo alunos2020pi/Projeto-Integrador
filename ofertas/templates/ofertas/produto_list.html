@@ -21,7 +21,11 @@
       <tr>
         <td><a href="{% url 'ondeencontrar' produto.id %}">{{ produto.desc }} {{ produto.marca }}</a></td>
 		<td><a href="{% url 'ondeencontrar' produto.id %}">{{ produto.qtd }} {{ produto.unid }}</a></td>
+		{% if produto.obs %}
 		<td><a href="{% url 'ondeencontrar' produto.id %}">{{ produto.obs }}</a></td>
+		{% else %}
+		<td></td>
+		{% endif %}
 		</a>
       </tr>
     {% endfor %}

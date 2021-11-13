@@ -28,7 +28,10 @@ class Produto(models.Model):
         ordering = ['desc', 'marca','qtd']
         
     def __str__(self):
-        return f'{self.desc} {self.marca}, {self.qtd} {self.unid}, {self.obs}'
+        if self.obs:
+            return f'{self.desc} {self.marca}, {self.qtd} {self.unid}, {self.obs}'
+        else:
+            return f'{self.desc} {self.marca}, {self.qtd} {self.unid}'
         
     def get_absolute_url(self):
         return reverse('ondeencontrar', args=[str(self.id)])
