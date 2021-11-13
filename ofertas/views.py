@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from ofertas.models import Supermercado, Produto, Em_Oferta
+from ofertas.models import Supermercado, Produto, Em_Oferta, Loja
 
 def index(request):
     """Função view para a página inicial do site"""
@@ -40,11 +40,13 @@ def ofertasporsuper(request, pk):
     """Função view para a página ofertas por super"""
     ofertasporsuper = Em_Oferta.objects.filter(sm__id__exact=pk)
     nomesuper = ofertasporsuper[0].sm
+    lojas = Loja.objects.filter(sm__id__exact=pk)
     
     
     context = {
         'ofertasporsuper': ofertasporsuper,
         'nomesuper': nomesuper,
+        'lojas': lojas,
     }
     
     #Renderiza o template index.html com os dados na variável context

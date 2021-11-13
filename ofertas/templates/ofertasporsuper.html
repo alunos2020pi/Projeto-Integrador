@@ -2,6 +2,10 @@
 
 {% block content %}
   <h2>Lista de Ofertas no estabelecimento {{ nomesuper }}</h2>
+	{% if nomesuper.site %}
+	<p>Clique <a href="{{nomesuper.site}}">aqui</a> para ir ao site do estabelecimento</p>
+	{% endif %}
+
   {% if ofertasporsuper %}
   <table id="tabela" class="table table-hover"><thead>
 	   <tr>
@@ -28,6 +32,49 @@
   {% else %}
     <p>Não há ofertas cadastradas para esse estabelecimento.</p>
   {% endif %} 
-  <hr>
   <p>*Ou enquanto durarem os estoques</p>
+  <hr>
+  
+  <h2>Lista de lojas do estabelecimento {{ nomesuper }}</h2>
+  {% if lojas %}
+  <div class="table-responsive">
+  <table id="tabela" class="table table-hover"><thead>
+	   <tr>
+			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por nome aqui"/></th>
+			<th><input type="text" id="txtColuna2" value="" placeholder="logradouro"/></th>
+			<th><input type="text" id="txtColuna3" value="" placeholder="número"/></th>
+			<th><input type="text" id="txtColuna4" value="" placeholder="bairro"/></th>
+			<th><input type="text" id="txtColuna5" value="" placeholder="cidade"/></th>
+			<th><input type="text" id="txtColuna6" value="" placeholder="estado"/></th>
+			<th><input type="text" id="txtColuna7" value="" placeholder="CEP"/></th>
+	  </tr>  
+      <tr>
+        <th>Nome</th>
+        <th>Logradouro</th>
+        <th>Num</th>
+		<th>Bairro</th>
+		<th>Cidade</th>
+		<th>Estado</th>
+		<th>CEP</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for loja in lojas %}
+      <tr>
+        <td>{{ loja.nome }}</td>
+		<td>{{ loja.lograd }}</td>
+		<td>{{ loja.num }}</td>
+		<td>{{ loja.bairro }}</td>
+		<td>{{ loja.cidade }}</td>
+		<td>{{ loja.estado }}</td>
+		<td>{{ loja.cep }}</td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+	</div>
+  {% else %}
+    <p>Não há lojas cadastradas para esse estabelecimento.</p>
+  {% endif %}  
+
 {% endblock %}

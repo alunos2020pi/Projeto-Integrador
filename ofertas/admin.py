@@ -6,7 +6,7 @@ from ofertas.models import Supermercado, Produto, Em_Oferta, Loja
 
 @admin.register(Supermercado)
 class SupermercadoAdmin(admin.ModelAdmin):
-    list_display = ('nome',)
+    list_display = ('nome', 'site')
 
 @admin.register(Loja)
 class LojaAdmin(admin.ModelAdmin):
