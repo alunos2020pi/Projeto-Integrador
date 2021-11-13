@@ -7,14 +7,18 @@
   <table class="table table-hover"><thead>
       <tr>
         <th>Supermercado</th>
+		<th>Preço</th>
       </tr>
     </thead>
 	<tbody>
 	{% for local in locais %}
 		<tr>
-        <td>
-			<a href="{% url 'ofertasporsuper' local.sm.id %}">{{ local.sm }}</a>
-		</td>
+			<td>
+				<a href="{% url 'ofertasporsuper' local.sm.id %}">{{ local.sm }}</a>
+			</td>
+			<td>
+				<strong>{{ local.preco }}</strong>
+			</td>
 		</tr>
     {% endfor %}
 	</tbody>
