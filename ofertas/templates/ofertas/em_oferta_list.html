@@ -14,7 +14,7 @@
       <tr>
         <th>Produto</th>
         <th>Preço</th>
-        <th>Período</th>
+        <th>Período*</th>
 		<th>Estabelecimento</th>
       </tr>
     </thead>
@@ -22,7 +22,7 @@
 	{% for em_oferta in em_oferta_list %}
       <tr>
         <td>{{ em_oferta.pd }}</td>
-		<td>R${{ em_oferta.preco }}</td>
+		<td><strong>R${{ em_oferta.preco }}</strong></td>
 		<td>de {{ em_oferta.inicio }} à {{ em_oferta.fim }}</td>
 		<td>{{ em_oferta.sm }}</td>
       </tr>
@@ -32,4 +32,6 @@
   {% else %}
     <p>Não há ofertas cadastradas.</p>
   {% endif %}
+  <hr>
+  <p>*Ou enquanto durarem os estoques</p>
 {% endblock %}

@@ -12,14 +12,14 @@
       <tr>
         <th>Produto</th>
         <th>Preço</th>
-        <th>Período</th>
+        <th>Período*</th>
 	  </tr>
     </thead>
 	<tbody>
 	{% for ofertaporsuper in ofertasporsuper %}
       <tr>
         <td>{{ ofertaporsuper.pd }}</td>
-		<td>R${{ ofertaporsuper.preco }}</td>
+		<td><strong>R${{ ofertaporsuper.preco }}</strong></td>
 		<td>de {{ ofertaporsuper.inicio }} à {{ ofertaporsuper.fim }}</td>
       </tr>
     {% endfor %}
@@ -28,4 +28,6 @@
   {% else %}
     <p>Não há ofertas cadastradas para esse estabelecimento.</p>
   {% endif %} 
+  <hr>
+  <p>*Ou enquanto durarem os estoques</p>
 {% endblock %}
