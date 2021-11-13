@@ -7,9 +7,11 @@
 	{% endif %}
 
   {% if ofertasporsuper %}
+  <div class="table-responsive">
   <table id="tabela" class="table table-hover"><thead>
 	   <tr>
 			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por produto aqui"/></th>
+			<th></th>
 			<th></th>
 			<th></th>
 	  </tr>  
@@ -17,6 +19,7 @@
         <th>Produto</th>
         <th>Preço</th>
         <th>Período*</th>
+		<th>Obs</th>
 	  </tr>
     </thead>
 	<tbody>
@@ -25,10 +28,17 @@
         <td>{{ ofertaporsuper.pd }}</td>
 		<td><strong>R${{ ofertaporsuper.preco }}</strong></td>
 		<td>de {{ ofertaporsuper.inicio }} à {{ ofertaporsuper.fim }}</td>
+		{% if ofertaporsuper.obs %}
+		<td>{{ ofertaporsuper.obs }}</td>
+		{% else %}
+		<td></td>
+		{% endif %}
+		
       </tr>
     {% endfor %}
 	</tbody>
 	</table>
+	</div>
   {% else %}
     <p>Não há ofertas cadastradas para esse estabelecimento.</p>
   {% endif %} 

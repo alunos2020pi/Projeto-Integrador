@@ -11,12 +11,14 @@
 			<th></th>
 			<th></th>
 			<th></th>
+			<th></th>
 	  </tr>
       <tr>
         <th>Produto</th>
         <th>Preço</th>
         <th>Período*</th>
 		<th>Estabelecimento</th>
+		<th>Obs</th>
       </tr>
     </thead>
 	<tbody>
@@ -26,6 +28,11 @@
 		<td><strong>R${{ em_oferta.preco }}</strong></td>
 		<td>de {{ em_oferta.inicio }} à {{ em_oferta.fim }}</td>
 		<td>{{ em_oferta.sm }}</td>
+			{% if em_oferta.obs %}
+			<td>{{ em_oferta.obs }}</td>
+			{% else %}
+			<td></td>
+			{% endif %}
       </tr>
     {% endfor %}
 	</tbody>

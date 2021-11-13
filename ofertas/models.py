@@ -74,8 +74,25 @@ class Loja(models.Model):
 class Produto(models.Model):
     desc = models.CharField(max_length=50)
     marca = models.CharField(max_length=50)
-    qtd = models.PositiveIntegerField()
-    unid = models.CharField(max_length=50)
+    qtd = models.FloatField()
+    
+    UNIDADES = (
+        ('cx','caixa'),
+        ('g','grama'),
+        ('gl','galão'),
+        ('kg','quilo'),
+        ('l','litro'),
+        ('ml','mililitro'),
+        ('pc','pacote'),
+        ('pç','peça'),
+        ('unid','unidade')
+    )    
+    
+    unid = models.CharField(
+        max_length=10,
+        choices=UNIDADES
+    )
+    
     obs = models.CharField(max_length=50, null=True, blank=True)
     imagem = models.ImageField(upload_to='produtos/%Y/%m/%d', blank=True)
     
@@ -98,6 +115,7 @@ class Em_Oferta(models.Model):
     preco = models.DecimalField(max_digits=10, decimal_places=2)
     inicio = models.DateField(null=True, blank=True)
     fim = models.DateField(null=True, blank=True)
+    obs = models.CharField(max_length=50, null=True, blank=True)
 
     class Meta:
         ordering = ['pd','preco']
