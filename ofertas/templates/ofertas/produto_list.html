@@ -4,6 +4,7 @@
   <h2>Lista de Produtos</h2>
   <br>
   {% if produto_list %}
+  <div class="table-responsive">
   <table id="tabela" class="table table-hover"><thead>
 		<tr>
 			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por produto aqui"/></th>
@@ -31,6 +32,7 @@
     {% endfor %}
 	</tbody>
 	</table>
+	</div>
   {% else %}
     <p>Não há produtos cadastrados.</p>
   {% endif %} 
