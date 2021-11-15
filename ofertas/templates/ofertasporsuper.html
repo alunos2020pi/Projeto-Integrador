@@ -39,26 +39,18 @@
 	</tbody>
 	</table>
 	</div>
+	  <p>*Ou enquanto durarem os estoques</p>
   {% else %}
     <p>Não há ofertas cadastradas para esse estabelecimento.</p>
   {% endif %} 
-  <p>*Ou enquanto durarem os estoques</p>
+
   <hr>
   
   <h2>Lista de lojas do estabelecimento {{ nomesuper }}</h2>
   {% if lojas %}
   <div class="table-responsive">
   <table id="tabela" class="table table-hover"><thead>
-	   <tr>
-			<th><input type="text" id="txtColuna1" value="" placeholder="Filtre por nome aqui"/></th>
-			<th><input type="text" id="txtColuna2" value="" placeholder="logradouro"/></th>
-			<th><input type="text" id="txtColuna3" value="" placeholder="número"/></th>
-			<th><input type="text" id="txtColuna4" value="" placeholder="bairro"/></th>
-			<th><input type="text" id="txtColuna5" value="" placeholder="cidade"/></th>
-			<th><input type="text" id="txtColuna6" value="" placeholder="estado"/></th>
-			<th><input type="text" id="txtColuna7" value="" placeholder="CEP"/></th>
-	  </tr>  
-      <tr>
+        <tr>
         <th>Nome</th>
         <th>Logradouro</th>
         <th>Num</th>

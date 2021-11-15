@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from datetime import date
+
+today = date.today()
 
 # Create your views here.
 from ofertas.models import Supermercado, Produto, Em_Oferta, Loja
@@ -8,7 +11,7 @@ def index(request):
     #Gera alguns contadores para os objetos principais
     num_super = Supermercado.objects.all().count()
     num_prod = Produto.objects.all().count()
-    num_ofertas = Em_Oferta.objects.all().count()
+    num_ofertas = Em_Oferta.objects.filter(fim__gte=today).count()
     
     
     context = {
@@ -34,13 +37,29 @@ class ProdutoListView(generic.ListView):
     model = Produto
 
 class Em_OfertaListView(generic.ListView):
-    model = Em_Oferta
+	model = Em_Oferta
+	queryset = Em_Oferta.objects.filter(fim__gte=today)
  
 def ofertasporsuper(request, pk):
     """Função view para a página ofertas por super"""
-    ofertasporsuper = Em_Oferta.objects.filter(sm__id__exact=pk)
-    nomesuper = ofertasporsuper[0].sm
+    ofertasporsuper = Em_Oferta.objects.filter(sm__id__exact=pk,fim__gte=today)
     lojas = Loja.objects.filter(sm__id__exact=pk)
+    if ofertasporsuper:
+        nomesuper = ofertasporsuper[0].sm
+        context = {
+            'ofertasporsuper': ofertasporsuper,
+            'nomesuper': nomesuper,
+            'lojas': lojas,
+        }
+    else:
+        context = {
+            'ofertasporsuper': ofertasporsuper,
+            'nomesuper': '',
+            'lojas': lojas,
+        }
+    
+    #Renderiza o template index.html com os dados na variável context
+    return render(request, 'ofertasporsuper.html', context=context)	
     
     
     context = {
@@ -54,14 +73,18 @@ def ofertasporsuper(request, pk):
     
 def ondeencontrar(request, pk):
     """Função view para a encontrar supermercados que possuem um produto específico em oferta"""
-    locais = Em_Oferta.objects.filter(pd__id__exact=pk)
-    produto = locais[0].pd
-    
-    
-    context = {
-        'locais': locais,
-        'produto': produto,
-    }
+    locais = Em_Oferta.objects.filter(pd__id__exact=pk, fim__gte=today)
+    if locais:
+        produto = locais[0].pd
+        context = {
+            'locais': locais,
+            'produto': produto,
+        }
+    else:
+        context = {
+            'locais': locais,
+            'produto': '',
+        }
     
     #Renderiza o template ondeencontrar.html com os dados na variável context
     return render(request, 'ondeencontrar.html', context=context)
