@@ -1,6 +1,10 @@
 body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 100%;
     overflow-y: overlay !important;
-    overflow-x: hidden;
+    overflow-x: auto;
     overflow-wrap: break-word;
 }
 
@@ -15,3 +19,7 @@ body {
     list-style: none;
 }
 
+
+.footer-default {
+    background-image: "https://pbs.twimg.com/profile_banners/47634159/1624280262/600x200";
+}
