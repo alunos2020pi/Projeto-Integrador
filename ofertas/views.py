@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from datetime import date
 
-today = date.today()
+
 
 # Create your views here.
 from ofertas.models import Supermercado, Produto, Em_Oferta, Loja
@@ -9,6 +9,7 @@ from ofertas.models import Supermercado, Produto, Em_Oferta, Loja
 def index(request):
     """Função view para a página inicial do site"""
     #Gera alguns contadores para os objetos principais
+	today = date.today()
     num_super = Supermercado.objects.all().count()
     num_prod = Produto.objects.all().count()
     num_ofertas = Em_Oferta.objects.filter(fim__gte=today).count()
@@ -37,11 +38,13 @@ class ProdutoListView(generic.ListView):
     model = Produto
 
 class Em_OfertaListView(generic.ListView):
+	today = date.today()
 	model = Em_Oferta
 	queryset = Em_Oferta.objects.filter(fim__gte=today)
  
 def ofertasporsuper(request, pk):
     """Função view para a página ofertas por super"""
+	today = date.today()
     ofertasporsuper = Em_Oferta.objects.filter(sm__id__exact=pk,fim__gte=today)
     lojas = Loja.objects.filter(sm__id__exact=pk)
     if ofertasporsuper:
@@ -73,6 +76,7 @@ def ofertasporsuper(request, pk):
     
 def ondeencontrar(request, pk):
     """Função view para a encontrar supermercados que possuem um produto específico em oferta"""
+	today = date.today()
     locais = Em_Oferta.objects.filter(pd__id__exact=pk, fim__gte=today)
     if locais:
         produto = locais[0].pd
