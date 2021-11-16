@@ -16,26 +16,26 @@ def index(request):
     
     
 	context = {
-        'num_super': num_super,
-        'num_prod': num_prod,
-        'num_ofertas': num_ofertas,
-    }
+		'num_super': num_super,
+		'num_prod': num_prod,
+		'num_ofertas': num_ofertas,
+	}
     
-    #Renderiza o template index.html com os dados na variável context
+	#Renderiza o template index.html com os dados na variável context
 	return render(request, 'index.html', context=context)
 
 def about(request):
-    """Função view para a página sobre nós do site"""
-      #Renderiza o template about.html
-    return render(request, 'about.html')
+	"""Função view para a página sobre nós do site"""
+	#Renderiza o template about.html
+	return render(request, 'about.html')
 
 from django.views import generic
 
 class SupermercadoListView(generic.ListView):
-    model = Supermercado
+	model = Supermercado
 
 class ProdutoListView(generic.ListView):
-    model = Produto
+	model = Produto
 
 class Em_OfertaListView(generic.ListView):
 	today = date.today()
@@ -50,28 +50,28 @@ def ofertasporsuper(request, pk):
 	if ofertasporsuper:
 		nomesuper = ofertasporsuper[0].sm
 		context = {
-            'ofertasporsuper': ofertasporsuper,
-            'nomesuper': nomesuper,
-            'lojas': lojas,
-        }
+			'ofertasporsuper': ofertasporsuper,
+			'nomesuper': nomesuper,
+			'lojas': lojas,
+		}
 	else:
 		context = {
-            'ofertasporsuper': ofertasporsuper,
-            'nomesuper': '',
-            'lojas': lojas,
-        }
+			'ofertasporsuper': ofertasporsuper,
+			'nomesuper': '',
+			'lojas': lojas,
+		}
     
-    #Renderiza o template index.html com os dados na variável context
+	#Renderiza o template index.html com os dados na variável context
 	return render(request, 'ofertasporsuper.html', context=context)	
     
     
 	context = {
-        'ofertasporsuper': ofertasporsuper,
-        'nomesuper': nomesuper,
-        'lojas': lojas,
-    }
+		'ofertasporsuper': ofertasporsuper,
+		'nomesuper': nomesuper,
+		'lojas': lojas,
+	}
     
-    #Renderiza o template index.html com os dados na variável context
+	#Renderiza o template index.html com os dados na variável context
 	return render(request, 'ofertasporsuper.html', context=context)
     
 def ondeencontrar(request, pk):
@@ -81,14 +81,14 @@ def ondeencontrar(request, pk):
 	if locais:
 		produto = locais[0].pd
 		context = {
-            'locais': locais,
-            'produto': produto,
-        }
+			'locais': locais,
+			'produto': produto,
+		}
 	else:
 		context = {
-            'locais': locais,
-            'produto': '',
-        }
+			'locais': locais,
+			'produto': '',
+		}
     
-    #Renderiza o template ondeencontrar.html com os dados na variável context
-		return render(request, 'ondeencontrar.html', context=context)
+	#Renderiza o template ondeencontrar.html com os dados na variável context
+	return render(request, 'ondeencontrar.html', context=context)
