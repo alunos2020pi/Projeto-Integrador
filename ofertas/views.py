@@ -7,22 +7,22 @@ from datetime import date
 from ofertas.models import Supermercado, Produto, Em_Oferta, Loja
 
 def index(request):
-    """Função view para a página inicial do site"""
-    #Gera alguns contadores para os objetos principais
+	"""Função view para a página inicial do site"""
+	#Gera alguns contadores para os objetos principais
 	today = date.today()
-    num_super = Supermercado.objects.all().count()
-    num_prod = Produto.objects.all().count()
-    num_ofertas = Em_Oferta.objects.filter(fim__gte=today).count()
+	num_super = Supermercado.objects.all().count()
+	num_prod = Produto.objects.all().count()
+	num_ofertas = Em_Oferta.objects.filter(fim__gte=today).count()
     
     
-    context = {
+	context = {
         'num_super': num_super,
         'num_prod': num_prod,
         'num_ofertas': num_ofertas,
     }
     
     #Renderiza o template index.html com os dados na variável context
-    return render(request, 'index.html', context=context)
+	return render(request, 'index.html', context=context)
 
 def about(request):
     """Função view para a página sobre nós do site"""
@@ -43,52 +43,52 @@ class Em_OfertaListView(generic.ListView):
 	queryset = Em_Oferta.objects.filter(fim__gte=today)
  
 def ofertasporsuper(request, pk):
-    """Função view para a página ofertas por super"""
+	"""Função view para a página ofertas por super"""
 	today = date.today()
-    ofertasporsuper = Em_Oferta.objects.filter(sm__id__exact=pk,fim__gte=today)
-    lojas = Loja.objects.filter(sm__id__exact=pk)
-    if ofertasporsuper:
-        nomesuper = ofertasporsuper[0].sm
-        context = {
+	ofertasporsuper = Em_Oferta.objects.filter(sm__id__exact=pk,fim__gte=today)
+	lojas = Loja.objects.filter(sm__id__exact=pk)
+	if ofertasporsuper:
+		nomesuper = ofertasporsuper[0].sm
+		context = {
             'ofertasporsuper': ofertasporsuper,
             'nomesuper': nomesuper,
             'lojas': lojas,
         }
-    else:
-        context = {
+	else:
+		context = {
             'ofertasporsuper': ofertasporsuper,
             'nomesuper': '',
             'lojas': lojas,
         }
     
     #Renderiza o template index.html com os dados na variável context
-    return render(request, 'ofertasporsuper.html', context=context)	
+	return render(request, 'ofertasporsuper.html', context=context)	
     
     
-    context = {
+	context = {
         'ofertasporsuper': ofertasporsuper,
         'nomesuper': nomesuper,
         'lojas': lojas,
     }
     
     #Renderiza o template index.html com os dados na variável context
-    return render(request, 'ofertasporsuper.html', context=context)
+	return render(request, 'ofertasporsuper.html', context=context)
     
 def ondeencontrar(request, pk):
-    """Função view para a encontrar supermercados que possuem um produto específico em oferta"""
+	"""Função view para a encontrar supermercados que possuem um produto específico em oferta"""
 	today = date.today()
-    locais = Em_Oferta.objects.filter(pd__id__exact=pk, fim__gte=today)
-    if locais:
-        produto = locais[0].pd
-        context = {
+	locais = Em_Oferta.objects.filter(pd__id__exact=pk, fim__gte=today)
+	if locais:
+		produto = locais[0].pd
+		context = {
             'locais': locais,
             'produto': produto,
         }
-    else:
-        context = {
+	else:
+		context = {
             'locais': locais,
             'produto': '',
         }
     
     #Renderiza o template ondeencontrar.html com os dados na variável context
-    return render(request, 'ondeencontrar.html', context=context)
+		return render(request, 'ondeencontrar.html', context=context)
