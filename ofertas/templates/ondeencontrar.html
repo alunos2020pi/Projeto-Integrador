@@ -4,10 +4,13 @@
   <h2>Lista de Estabelecimentos com oferta do produto {{ produto }}</h2>
   <br>
   {% if locais %}
+  <div class="table-responsive">
   <table class="table table-hover"><thead>
       <tr>
         <th>Supermercado</th>
 		<th>Preço</th>
+		<th>Período*</th>
+		<th>Observação</th>
       </tr>
     </thead>
 	<tbody>
@@ -19,10 +22,15 @@
 			<td>
 				<strong>{{ local.preco }}</strong>
 			</td>
+			<td>de {{ local.inicio }} à {{ local.fim }}</td>
+			<td>{{ local.obs }}</td>
 		</tr>
     {% endfor %}
 	</tbody>
 	</table>
+	</div>
+	<hr>
+	  <p>*Ou enquanto durarem os estoques</p>
   {% else %}
     <p>Não há locais onde este produto esteja em oferta no momento.</p>
   {% endif %} 
