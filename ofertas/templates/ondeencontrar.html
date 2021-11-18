@@ -23,7 +23,11 @@
 				<strong>{{ local.preco }}</strong>
 			</td>
 			<td>de {{ local.inicio }} à {{ local.fim }}</td>
+			{% if local.obs %}
 			<td>{{ local.obs }}</td>
+			{% else %}
+			<td></td>
+			{% endif %}
 		</tr>
     {% endfor %}
 	</tbody>
