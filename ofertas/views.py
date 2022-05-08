@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from datetime import date
-
+from django.views.generic.edit import CreateView
 
 
 # Create your views here.
@@ -68,3 +68,19 @@ def ondeencontrar(request, pk):
 	   
 	#Renderiza o template ondeencontrar.html com os dados na variável context
 	return render(request, 'ondeencontrar.html', context=context)
+	
+class SupermercadoCreate(CreateView):
+    model = Supermercado
+    fields = ['nome', 'site']
+
+class LojaCreate(CreateView):
+    model = Loja
+    fields = ['sm', 'nome', 'lograd', 'num', 'bairro', 'cidade', 'estado', 'cep']
+	
+class ProdutoCreate(CreateView):
+    model = Produto
+    fields = ['desc', 'marca', 'qtd', 'unid', 'obs']
+	
+class Em_OfertaCreate(CreateView):
+    model = Em_Oferta
+    fields = ['sm', 'pd', 'preco', 'inicio', 'fim', 'obs']
