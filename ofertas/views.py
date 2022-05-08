@@ -59,18 +59,12 @@ def ofertasporsuper(request, pk):
 def ondeencontrar(request, pk):
 	"""Função view para a encontrar supermercados que possuem um produto específico em oferta"""
 	today = date.today()
+	produto = Produto.objects.get(id=pk)
 	locais = Em_Oferta.objects.filter(pd__id__exact=pk, fim__gte=today)
-	if locais:
-		produto = locais[0].pd
-		context = {
-			'locais': locais,
-			'produto': produto,
-		}
-	else:
-		context = {
-			'locais': locais,
-			'produto': '',
-		}
-    
+	context = {
+		'locais': locais,
+		'produto': produto,
+	}
+	   
 	#Renderiza o template ondeencontrar.html com os dados na variável context
 	return render(request, 'ondeencontrar.html', context=context)
