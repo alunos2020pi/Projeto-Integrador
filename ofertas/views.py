@@ -45,32 +45,14 @@ class Em_OfertaListView(generic.ListView):
 def ofertasporsuper(request, pk):
 	"""Função view para a página ofertas por super"""
 	today = date.today()
+	super = Supermercado.objects.get(id=pk)
 	ofertasporsuper = Em_Oferta.objects.filter(sm__id__exact=pk,fim__gte=today)
 	lojas = Loja.objects.filter(sm__id__exact=pk)
-	if ofertasporsuper:
-		nomesuper = ofertasporsuper[0].sm
-		context = {
-			'ofertasporsuper': ofertasporsuper,
-			'nomesuper': nomesuper,
-			'lojas': lojas,
-		}
-	else:
-		context = {
-			'ofertasporsuper': ofertasporsuper,
-			'nomesuper': '',
-			'lojas': lojas,
-		}
-    
-	#Renderiza o template index.html com os dados na variável context
-	return render(request, 'ofertasporsuper.html', context=context)	
-    
-    
 	context = {
+		'super': super,
 		'ofertasporsuper': ofertasporsuper,
-		'nomesuper': nomesuper,
 		'lojas': lojas,
 	}
-    
 	#Renderiza o template index.html com os dados na variável context
 	return render(request, 'ofertasporsuper.html', context=context)
     
