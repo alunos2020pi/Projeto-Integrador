@@ -69,7 +69,8 @@ class Loja(models.Model):
     def __str__(self):
         return f'{self.nome}: {self.lograd}, {self.num} - {self.bairro} - {self.cidade}-{self.estado} CEP:{self.cep}'
     
-    
+    def get_absolute_url(self):
+        return reverse('ofertasporsuper', args=[str(self.sm.id)])
         
 class Produto(models.Model):
     desc = models.CharField(max_length=50)
@@ -106,7 +107,7 @@ class Produto(models.Model):
             return f'{self.desc} {self.marca}, {self.qtd} {self.unid}'
         
     def get_absolute_url(self):
-        return reverse('ondeencontrar', args=[str(self.id)])
+	    return reverse('ondeencontrar', args=[str(self.id)])
 
         
 class Em_Oferta(models.Model):
@@ -125,3 +126,6 @@ class Em_Oferta(models.Model):
     
     def __str__(self):
         return f'Produto {self.pd} em oferta no mercado {self.sm} de {self.inicio} a {self.fim}'
+		
+    def get_absolute_url(self):
+        return reverse('ofertas')
