@@ -140,3 +140,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles' )
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'

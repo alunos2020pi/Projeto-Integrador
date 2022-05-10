@@ -46,6 +46,15 @@
   </nav>
   <div class="container-fluid">
     <div class="row">
+	{% if user.is_authenticated %}
+     		<ul>Usuário: {{ user.get_username }}</ul>
+     		<ul><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></ul>
+   	{% else %}
+     		<ul><a href="{% url 'login'%}?next={{request.path}}">Login</a></ul>
+   	{% endif %}
+	</div>
+
+	<div class="row">
       {% block sidebar %}
         <div class="col-lg-3">
             <ul class="list-group mb-3 mb-lg-0">
@@ -65,6 +74,26 @@
                     href="{% url 'ofertas' %}">
                     Ofertas
                 </a>
+				{% if user.is_authenticated %}
+				<a class="text-decoration-none list-group-item list-group-item-light"
+                    href="{% url 'supermercado-create' %}">
+                    Cadastrar Supermercado
+				</a>
+				<a class="text-decoration-none list-group-item list-group-item-light"
+                    href="{% url 'loja-create' %}">
+                    Cadastrar Loja
+				</a>				
+				<a class="text-decoration-none list-group-item list-group-item-light"
+                    href="{% url 'produto-create' %}">
+                    Cadastrar Produtos
+				</a>
+				<a class="text-decoration-none list-group-item list-group-item-light"
+                    href="{% url 'em_oferta-create' %}">
+                    Cadastrar Ofertas
+				</a>
+				</br>
+				{% endif %}
+
             </ul>
         </div>
 	   {% endblock %}
