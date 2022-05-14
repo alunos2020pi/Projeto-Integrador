@@ -40,7 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ofertas.apps.OfertasConfig',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'crispy_forms',	
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,6 +77,11 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 WSGI_APPLICATION = 'offerta.wsgi.application'
@@ -140,5 +151,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles' )
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
-# Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/'
+
+LOGIN_REDIRECT_URL = "/"
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
