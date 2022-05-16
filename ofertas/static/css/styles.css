@@ -12,6 +12,10 @@ body {
     overflow-wrap: break-word;
 }
 
+a:link {
+  color: #0072ee;
+}
+
 .active {
     background-color: #266fa0 !important;
     border-color: #266fa0 !important;
