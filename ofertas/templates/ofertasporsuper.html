@@ -1,9 +1,9 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h2>Lista de Ofertas no estabelecimento {{ super.nome }}</h2>
+  <h1>Lista de Ofertas no estabelecimento {{ super.nome }}</h1>
 	{% if super.site %}
-	<p>Clique <a href="{{super.site}}">aqui</a> para ir ao site do estabelecimento</p>
+	<p><a href="{{super.site}}">Acesse o site deste estabelecimento (link externo)</a></p>
 	{% endif %}
 
   {% if ofertasporsuper %}

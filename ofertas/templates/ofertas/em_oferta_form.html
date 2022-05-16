@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <h2>Cadastro de Oferta</h2>
+    <h1>Cadastro de Oferta</h1>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
