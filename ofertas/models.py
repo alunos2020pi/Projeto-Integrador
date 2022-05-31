@@ -118,6 +118,18 @@ class Em_Oferta(models.Model):
     fim = models.DateField(null=True, blank=True)
     obs = models.CharField(max_length=50, null=True, blank=True)
 
+    FONTES = (
+        ('Panfleto','Panfleto'),
+        ('Funcionário','Funcionário'),
+        ('Cliente','Cliente')
+    )
+
+    fonte = models.CharField(
+        max_length=15,
+        choices=FONTES,
+		default='Panfleto'
+    )
+
     class Meta:
         ordering = ['pd','preco']
         verbose_name = 'Em oferta'

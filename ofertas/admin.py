@@ -18,4 +18,4 @@ class ProdutoAdmin(admin.ModelAdmin):
 
 @admin.register(Em_Oferta)
 class Em_OfertaAdmin(admin.ModelAdmin):
-    list_display = ('sm', 'pd', 'preco', 'inicio', 'fim')
+    list_display = ('sm', 'pd', 'preco', 'inicio', 'fim', 'fonte')

@@ -11,6 +11,7 @@
 		<th>Preço</th>
 		<th>Período*</th>
 		<th>Observação</th>
+		<th>Fonte</th>
       </tr>
     </thead>
 	<tbody>
@@ -28,6 +29,7 @@
 			{% else %}
 			<td></td>
 			{% endif %}
+			<td>{{ local.fonte }}</td>
 		</tr>
     {% endfor %}
 	</tbody>

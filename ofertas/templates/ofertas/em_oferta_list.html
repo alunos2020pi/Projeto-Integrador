@@ -12,6 +12,7 @@
 			<th></th>
 			<th></th>
 			<th></th>
+			<th></th>
 	  </tr>
       <tr>
         <th>Produto</th>
@@ -19,6 +20,7 @@
         <th>Período*</th>
 		<th>Estabelecimento</th>
 		<th>Obs</th>
+		<th>Fonte</th>
       </tr>
     </thead>
 	<tbody>
@@ -33,6 +35,7 @@
 			{% else %}
 			<td></td>
 			{% endif %}
+		<td>{{ em_oferta.fonte }}</td>	
       </tr>
     {% endfor %}
 	</tbody>

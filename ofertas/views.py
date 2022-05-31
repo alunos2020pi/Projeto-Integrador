@@ -89,4 +89,4 @@ class ProdutoCreate(CreateView):
 @method_decorator(login_required, name='dispatch')	
 class Em_OfertaCreate(CreateView):
     model = Em_Oferta
-    fields = ['sm', 'pd', 'preco', 'inicio', 'fim', 'obs']
+    fields = ['sm', 'pd', 'preco', 'inicio', 'fim', 'obs', 'fonte']

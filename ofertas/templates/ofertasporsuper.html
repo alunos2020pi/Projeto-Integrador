@@ -14,12 +14,14 @@
 			<th></th>
 			<th></th>
 			<th></th>
+			<th></th>
 	  </tr>  
       <tr>
         <th>Produto</th>
         <th>Preço</th>
         <th>Período*</th>
 		<th>Obs</th>
+		<th>Fonte</th>
 	  </tr>
     </thead>
 	<tbody>
@@ -33,7 +35,7 @@
 		{% else %}
 		<td></td>
 		{% endif %}
-		
+		<td>{{ ofertaporsuper.fonte }}</td>
       </tr>
     {% endfor %}
 	</tbody>

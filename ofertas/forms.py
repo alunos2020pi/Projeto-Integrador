@@ -20,4 +20,4 @@ class AdicionaProduto(ModelForm):
 class AdicionaEm_Oferta(ModelForm):
     class Meta:
         model = Em_Oferta	
-        fields = ['sm', 'pd', 'preco', 'inicio', 'fim', 'obs']
+        fields = ['sm', 'pd', 'preco', 'inicio', 'fim', 'obs','fonte']
