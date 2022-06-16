@@ -3,6 +3,7 @@
 {% block content %}
   <h1>Lista de Ofertas</h1>
   <br>
+  <p>Você encontrou uma ofeta interessante? Você pode <a href="{% url 'em_oferta-create' %}">cadastrar uma oferta.</a></p>
   {% if em_oferta_list %}
   <div class="table-responsive">
   <table id="tabela" class="table table-hover"><thead>

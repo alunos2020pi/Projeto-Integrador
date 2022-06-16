@@ -3,6 +3,7 @@
 {% block content %}
   <h1>Lista de Produtos</h1>
   <br>
+  <p>Não encontrou o produto que estava procurando? Você pode <a href="{% url 'produto-create' %}">cadastrar um produto.</a></p>
   {% if produto_list %}
   <div class="table-responsive">
   <table id="tabela" class="table table-hover"><thead>

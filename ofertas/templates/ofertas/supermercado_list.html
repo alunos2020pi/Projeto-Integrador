@@ -3,6 +3,7 @@
 {% block content %}
   <h1>Lista de Supermercados</h1>
   <br>
+  <p>Não encontrou o supermercado que estava procurando? Você pode <a href="{% url 'supermercado-create' %}">cadastrar um supermercado.</a></p>
   {% if supermercado_list %}
   <table class="table table-hover"><thead>
       <tr>

@@ -121,7 +121,8 @@ class Em_Oferta(models.Model):
     FONTES = (
         ('Panfleto','Panfleto'),
         ('Funcionário','Funcionário'),
-        ('Cliente','Cliente')
+        ('Cliente','Cliente'),
+		('Site', 'Site')
     )
 
     fonte = models.CharField(

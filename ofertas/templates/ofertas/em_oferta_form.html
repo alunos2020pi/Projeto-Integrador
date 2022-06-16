@@ -4,6 +4,8 @@
 
 {% block content %}
     <h1>Cadastro de Oferta</h1>
+	<br>
+	<p>Antes de cadastrar uma oferta, <a href="{% url 'produtos' %}">verifique se a oferta já foi cadastrada.</a></p>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}

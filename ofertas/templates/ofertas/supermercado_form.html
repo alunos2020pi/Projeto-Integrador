@@ -4,6 +4,8 @@
 
 {% block content %}
     <h1>Cadastro de Supermercado</h1>
+	<br>
+	<p>Antes de cadastrar um supermercado, <a href="{% url 'supermercados' %}">verifique se o mercado já foi cadastrado.</a></p>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}

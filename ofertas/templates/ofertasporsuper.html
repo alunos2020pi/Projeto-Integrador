@@ -49,6 +49,7 @@
   <hr>
   
   <h2>Lista de lojas do estabelecimento {{ super.nome }}</h2>
+  <p>Não encontrou a loja que estava procurando? Você pode <a href="{% url 'loja-create' %}">cadastrar uma loja.</a></p>
   {% if lojas %}
   <div class="table-responsive">
   <table id="tabela" class="table table-hover"><thead>
