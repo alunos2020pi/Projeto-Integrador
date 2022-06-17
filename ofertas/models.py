@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -7,6 +8,7 @@ class Supermercado(models.Model):
     nome = models.CharField(max_length=50, help_text='Insira o nome de um mercado')
     imagem = models.ImageField(upload_to='supermercados/%Y/%m/%d', blank=True)
     site = models.CharField(max_length=50, help_text='Insira o site com http://', blank=True)
+    informante = models.ForeignKey(User, on_delete=models.CASCADE)	
     
     class Meta:
         ordering = ['nome']
@@ -24,6 +26,7 @@ class Loja(models.Model):
     num = models.PositiveIntegerField()
     bairro = models.CharField(max_length=50)
     cidade = models.CharField(max_length=50)
+    informante = models.ForeignKey(User, on_delete=models.CASCADE)	
     
     ESTADOS = (
         ('AC',	'Acre'),
@@ -96,6 +99,7 @@ class Produto(models.Model):
     
     obs = models.CharField(max_length=50, null=True, blank=True)
     imagem = models.ImageField(upload_to='produtos/%Y/%m/%d', blank=True)
+    informante = models.ForeignKey(User, on_delete=models.CASCADE)
     
     class Meta:
         ordering = ['desc', 'marca','qtd']
@@ -130,6 +134,8 @@ class Em_Oferta(models.Model):
         choices=FONTES,
 		default='Panfleto'
     )
+	
+    informante = models.ForeignKey(User, on_delete=models.CASCADE)	
 
     class Meta:
         ordering = ['pd','preco']

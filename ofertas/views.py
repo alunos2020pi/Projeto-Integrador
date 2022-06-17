@@ -75,18 +75,41 @@ def ondeencontrar(request, pk):
 class SupermercadoCreate(CreateView):
     model = Supermercado
     fields = ['nome', 'site']
+	
+    def form_valid(self, form):
+        form.instance.informante = self.request.user
+        form.instance.nome = form.instance.nome.title()
+        return super().form_valid(form)		
 
 @method_decorator(login_required, name='dispatch')
 class LojaCreate(CreateView):
     model = Loja
     fields = ['sm', 'nome', 'lograd', 'num', 'bairro', 'cidade', 'estado', 'cep']
 	
+    def form_valid(self, form):
+        form.instance.informante = self.request.user
+        form.instance.nome = form.instance.nome.title()
+        form.instance.lograd = form.instance.lograd.title()
+        form.instance.bairro = form.instance.bairro.title()
+        form.instance.cidade = form.instance.cidade.title()		
+        return super().form_valid(form)		
+	
 @method_decorator(login_required, name='dispatch')
 class ProdutoCreate(CreateView):
     model = Produto
     fields = ['desc', 'marca', 'qtd', 'unid', 'obs']
+	
+    def form_valid(self, form):
+        form.instance.informante = self.request.user
+        form.instance.desc = form.instance.desc.title()
+        form.instance.marca = form.instance.marca.title()		
+        return super().form_valid(form)		
 
 @method_decorator(login_required, name='dispatch')	
 class Em_OfertaCreate(CreateView):
     model = Em_Oferta
     fields = ['sm', 'pd', 'preco', 'inicio', 'fim', 'obs', 'fonte']
+	
+    def form_valid(self, form):
+        form.instance.informante = self.request.user
+        return super().form_valid(form)	
