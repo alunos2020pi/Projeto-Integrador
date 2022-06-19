@@ -1,0 +1,47 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+ <h1>Meus Produtos Cadastrados</h1>
+ <br>
+ 
+ {% if produto_list %} 
+   <div class="table-responsive">
+  <table id="tabela" class="table table-hover">
+  <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Observação</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+	  </tr>
+   </thead>
+	<tbody>
+	{% for produto in produto_list %}
+      <tr>
+		<td>{{ produto.desc }} {{ produto.marca }}</td>
+		<td>{{ produto.qtd }} {{ produto.unid }}</td>
+
+		{% if produto.obs %}
+		<td>{{ produto.obs }}</td>
+		{% else %}
+		<td></td>
+		{% endif %}		
+		<td><a href="{% url 'produto-update' produto.id %}">Editar</a></td>
+		<td><a href="{% url 'produto-delete' produto.id %}">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+  
+	</div>
+ 
+ 
+ 
+ 
+  {% else %}
+ <p>Você não cadastrou nenhum produto ainda.</p>
+ 
+ {% endif %}
+ 
+{% endblock %}

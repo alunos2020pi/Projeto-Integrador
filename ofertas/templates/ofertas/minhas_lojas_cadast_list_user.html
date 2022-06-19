@@ -1,0 +1,52 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+ <h1>Minhas Lojas Cadastradas</h1>
+ <br>
+ 
+ {% if loja_list %} 
+   <div class="table-responsive">
+  <table id="tabela" class="table table-hover">
+  <thead>
+      <tr>
+		<th>Supermercado</th>
+        <th>Nome</th>
+        <th>Logradouro</th>
+        <th>Num</th>
+		<th>Bairro</th>
+		<th>Cidade</th>
+		<th>Estado</th>
+		<th>CEP</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for loja in loja_list %}
+      <tr>
+		<td>{{ loja.sm }}</td>
+		<td>{{ loja.nome }}</td>
+		<td>{{ loja.lograd }}</td>
+		<td>{{ loja.num }}</td>
+		<td>{{ loja.bairro }}</td>
+		<td>{{ loja.cidade }}</td>
+		<td>{{ loja.estado }}</td>
+		<td>{{ loja.cep }}</td>
+		<td><a href="{% url 'loja-update' loja.id %}">Editar</a></td>
+		<td><a href="{% url 'loja-delete' loja.id %}">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+  
+	</div>
+ 
+ 
+ 
+ 
+  {% else %}
+ <p>Você não cadastrou nenhuma loja ainda.</p>
+ 
+ {% endif %}
+ 
+{% endblock %}

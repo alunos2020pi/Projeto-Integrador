@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1><b>Minhas Contribuições</b></h1>
+  <br>
+  <p>Aqui você pode encontrar uma lista de supermercados, lojas, produtos e ofertas cadastradas por você.</p>
+  <p>Você pode editar ou excluir os dados que inseriu.</p>
+  <p><a href="{% url 'meussuper' %}">Lista de Supermercados cadastrados por mim</a></p>
+  <p><a href="{% url 'minhaslojas' %}">Lista de Lojas cadastradas por mim</a></p>
+  <p><a href="{% url 'meusprod' %}">Lista de Produtos cadastrados por mim</a></p>
+  <p><a href="{% url 'minhasofertas' %}">Lista de Ofertas cadastradas por mim</a></p>
+{% endblock %}

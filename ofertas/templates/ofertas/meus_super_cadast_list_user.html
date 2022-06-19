@@ -1,0 +1,47 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+ <h1>Meus Supermercados Cadastrados</h1>
+ <br>
+ {% if supermercado_list %}
+
+ 
+   <table class="table table-hover"><thead>
+      <tr>
+        <th>Nome</th>
+		<th>Site</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+      </tr>
+    </thead>
+	<tbody>
+	{% for supermercado in supermercado_list %}
+		<tr>
+        <td>
+			<a href="{% url 'ofertasporsuper' supermercado.id %}">{{ supermercado.nome }}</a>
+		</td>
+		<td>
+			<a href="{{ supermercado.site }}">{{ supermercado.site }}</a>
+		</td>
+		<td>
+			<a href="{% url 'supermercado-update' supermercado.id %}">Editar</a>
+		</td>
+		<td>
+			<a href="{% url 'supermercado-delete' supermercado.id %}">Excluir</a>
+		</td>
+		</tr>
+    {% endfor %}
+	</tbody>
+	</table>
+ 
+ 
+ 
+ 
+ 
+ 
+  {% else %}
+ <p>Você não cadastrou nenhum supermercado ainda.</p>
+ 
+ {% endif %}
+ 
+{% endblock %}

@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from datetime import date
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -112,4 +114,70 @@ class Em_OfertaCreate(CreateView):
 	
     def form_valid(self, form):
         form.instance.informante = self.request.user
-        return super().form_valid(form)	
+        return super().form_valid(form)
+
+class MeusSupermercadosCadastradosListView(LoginRequiredMixin,generic.ListView):
+    model = Supermercado
+    template_name = 'ofertas/meus_super_cadast_list_user.html'
+
+    def get_queryset(self):
+        return Supermercado.objects.filter(informante=self.request.user)
+		
+class SupermercadoUpdate(LoginRequiredMixin, UpdateView):
+	model = Supermercado
+	fields = ['nome', 'site']
+	
+
+class SupermercadoDelete(LoginRequiredMixin, DeleteView):
+	model = Supermercado
+	success_url = reverse_lazy('supermercados')
+	
+class MinhasLojasCadastradasListView(LoginRequiredMixin,generic.ListView):
+    model = Loja
+    template_name = 'ofertas/minhas_lojas_cadast_list_user.html'
+
+    def get_queryset(self):
+        return Loja.objects.filter(informante=self.request.user)
+
+class LojaUpdate(LoginRequiredMixin, UpdateView):
+	model = Loja
+	fields = ['sm', 'nome', 'lograd', 'num', 'bairro', 'cidade', 'estado', 'cep']
+
+class LojaDelete(LoginRequiredMixin, DeleteView):
+	model = Loja
+	success_url = reverse_lazy('supermercados')
+
+class MeusProdutosCadastradosListView(LoginRequiredMixin,generic.ListView):
+    model = Produto
+    template_name = 'ofertas/meus_prod_cadast_list_user.html'
+
+    def get_queryset(self):
+        return Produto.objects.filter(informante=self.request.user)
+
+class ProdutoUpdate(LoginRequiredMixin, UpdateView):
+	model = Produto
+	fields = ['desc', 'marca', 'qtd', 'unid', 'obs']
+
+class ProdutoDelete(LoginRequiredMixin, DeleteView):
+	model = Produto
+	success_url = reverse_lazy('produtos')
+
+class MinhasOfertasCadastradasListView(LoginRequiredMixin,generic.ListView):
+    model = Em_Oferta
+    template_name = 'ofertas/minhas_ofertas_cadast_list_user.html'
+
+    def get_queryset(self):
+        return Em_Oferta.objects.filter(informante=self.request.user)
+
+class Em_OfertaUpdate(LoginRequiredMixin, UpdateView):
+	model = Em_Oferta
+	fields = ['sm', 'pd', 'preco', 'inicio', 'fim', 'obs', 'fonte']	
+
+class Em_OfertaDelete(LoginRequiredMixin, DeleteView):
+	model = Em_Oferta
+	success_url = reverse_lazy('ofertas')
+
+def minhascontrib(request):
+	"""Função view para a página Minhas Contribuições"""
+	#Renderiza o template about.html
+	return render(request, 'minhas_contrib.html')			

@@ -1,0 +1,52 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+ <h1>Minhas Ofertas Cadastradas</h1>
+ <br>
+ 
+ {% if em_oferta_list %} 
+   <div class="table-responsive">
+  <table id="tabela" class="table table-hover">
+  <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th>Período*</th>
+		<th>Estabelecimento</th>
+		<th>Obs</th>
+		<th>Fonte</th>
+		<th>Editar</th>
+		<th>Excluir</th>
+	  </tr>
+    </thead>
+	<tbody>
+	{% for em_oferta in em_oferta_list %}
+      <tr>
+		<td>{{ em_oferta.pd }}</td>
+		<td>R${{ em_oferta.preco }}</td>
+		<td>de {{ em_oferta.inicio }} à {{ em_oferta.fim }}</td>
+		<td>{{ em_oferta.sm }}</td>
+			{% if em_oferta.obs %}
+			<td>{{ em_oferta.obs }}</td>
+			{% else %}
+			<td></td>
+			{% endif %}		
+		<td>{{ em_oferta.fonte }}</td>
+		<td><a href="{% url 'oferta-update' em_oferta.id %}">Editar</a></td>
+		<td><a href="{% url 'oferta-delete' em_oferta.id %}">Excluir</a></td>
+      </tr>
+    {% endfor %}
+	</tbody>
+	</table>
+  
+	</div>
+ 
+ 
+ 
+ 
+  {% else %}
+ <p>Você não cadastrou nenhuma oferta ainda.</p>
+ 
+ {% endif %}
+ 
+{% endblock %}
