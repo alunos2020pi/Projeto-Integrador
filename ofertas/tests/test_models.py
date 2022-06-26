@@ -19,6 +19,6 @@ class SupermercadoTestCase(TestCase):
         self.assertEqual(supermercado.nome, "Supermercado Teste")
 
     def test_supermercado_instance(self):
-        supermercado = Supermercado.objects.get(name="Supermercado Teste")
-        self.assertEquals(isinstance(supermercado), Supermercado)
+        supermercado = Supermercado.objects.get(nome="Supermercado Teste")
+        isinstance(supermercado, Supermercado)
         
